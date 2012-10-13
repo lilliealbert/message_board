@@ -1,0 +1,19 @@
+<h1><%= @post.title %></h1>
+<h4>a post by the illustrious <%= @post.user.email %></h4>
+<div class="shaded">
+<p class="content"><%= @post.content.strip %></p>
+</div>
+
+<% @post.replies.each do |reply| %>
+<p><%= reply.content %><br /> <small>&mdash;<%= reply.user.email %> at <%= reply.created_at %> </small></p>
+<% end %>
+<% if @reply.errors %>
+    <% @reply.errors.full_messages.each do |message| %>
+        <p class="text-error"> <%= message %></p>
+    <% end %>    
+<% end %>
+
+<%= form_for([@post, @reply]) do |f| %>
+    <%= f.text_area :content, :size => "200x10" %>
+    <p><%= f.submit "Reply!" %></p>
+<% end %>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MessageBoard</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div class="navbar navbar-inverse">
+            <div class="navbar-inner">
+                <ul class="nav">
+                      <li class="active"><%= link_to "Home", posts_path %></li>
+                </ul>
+                <label class="navbar-text pull-right"><% if current_user %>Logged in as <%= current_user.email %>.<% end %></label>
+            </div>
+        </div>
+        
+        <% if notice %> <p class="notice text-success"><%= notice %></p> <% end %>
+        <% if alert %> <p class="alert text-error"><%= alert %></p> <% end %>
+
+        <%= yield %>
+    </div>
+</body>
+</html>

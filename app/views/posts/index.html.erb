@@ -1,0 +1,18 @@
+<h1>LillieForum Posts</h1>
+<p><%= link_to "Add Post", new_post_path %>
+<table class="table table-striped">
+    <tr>
+        <th>Exciting Post Title</th>
+        <th>Author</th>
+        <th>Posted at</th>
+        <th>Replies</th>
+    </tr>
+    <% @posts.each do |post| %>
+        <tr>
+            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td><%= post.user.email %></td>
+            <td><%= post.created_at %></td>
+            <td><%= post.replies.count %></td>
+        </tr>
+    <% end %>
+</table>
