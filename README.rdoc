@@ -1,4 +1,4 @@
-=HI MICHAEL
+=BYE MICHAEL
 
 = Welcome to Rails
 
